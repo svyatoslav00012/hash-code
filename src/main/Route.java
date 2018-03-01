@@ -12,23 +12,6 @@ public class Route {
 	private int earlStart;
 	private int latFinish;
 
-	public static Route read(){
-		return read(System.in);
-	}
-
-	public static Route read(InputStream inStream){
-		Scanner in = new Scanner(inStream);
-		Route route = new Route();
-		route.setStartX(in.nextInt());
-		route.setStartY(in.nextInt());
-		route.setEndX(in.nextInt());
-		route.setEndY(in.nextInt());
-		route.setEarlStart(in.nextInt());
-		route.setLatFinish(in.nextInt());
-		in.close();
-		return route;
-	}
-
 	public Route(){
 
 	}
@@ -40,6 +23,7 @@ public class Route {
 		this.endY = endY;
 		this.earlStart = earlStart;
 		this.latFinish = latFinish;
+		toString();
 	}
 
 	public int getStartX() {

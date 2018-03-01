@@ -34,16 +34,24 @@ public class Task {
 	}
 
 	public void read(InputStream inStream){
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(inStream);
 		rows = in.nextInt();
 		columns = in.nextInt();
 		vehicles = in.nextInt();
 		rides = in.nextInt();
 		bonus = in.nextInt();
 		steps = in.nextInt();
-		in.close();
-		for(int i = 0; i < rides; ++i)
-			routes.add(Route.read(inStream));
+		System.out.println(toString());
+		int x1, y1, x2, y2, s, f;
+		for(int i = 0; i < rides; ++i) {
+			x1 = in.nextInt();
+			y1 = in.nextInt();
+			x2 = in.nextInt();
+			y2 = in.nextInt();
+			s = in.nextInt();
+			f = in.nextInt();
+			routes.add(new Route(x1, y1, x2, y2, s, f));
+		}
 	}
 
 	public int getRows() {
@@ -92,5 +100,14 @@ public class Task {
 
 	public void setSteps(int steps) {
 		this.steps = steps;
+	}
+
+	public String toString(){
+		return "rows = " + rows +
+				"\ncolumns = " + columns +
+				"\nvehicles = " + vehicles +
+				"\nrides = " + rides +
+				"\nbonus = " + bonus +
+				"\nsteps = " + steps + "\n";
 	}
 }
