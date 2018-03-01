@@ -1,5 +1,9 @@
 package main;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +20,20 @@ public class Task {
 		routes = new ArrayList<>();
 	}
 
+	public void read(File file){
+		try {
+			FileInputStream in = new FileInputStream(file);
+			read(in);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void read(){
+		read(System.in);
+	}
+
+	public void read(InputStream inStream){
 		Scanner in = new Scanner(System.in);
 		rows = in.nextInt();
 		columns = in.nextInt();
@@ -24,8 +41,9 @@ public class Task {
 		rides = in.nextInt();
 		bonus = in.nextInt();
 		steps = in.nextInt();
+		in.close();
 		for(int i = 0; i < rides; ++i)
-			routes.add(Route.read());
+			routes.add(Route.read(inStream));
 	}
 
 	public int getRows() {

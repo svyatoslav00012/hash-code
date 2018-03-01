@@ -1,5 +1,6 @@
 package main;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class Route {
@@ -12,7 +13,11 @@ public class Route {
 	private int latFinish;
 
 	public static Route read(){
-		Scanner in = new Scanner(System.in);
+		return read(System.in);
+	}
+
+	public static Route read(InputStream inStream){
+		Scanner in = new Scanner(inStream);
 		Route route = new Route();
 		route.setStartX(in.nextInt());
 		route.setStartY(in.nextInt());
@@ -20,6 +25,7 @@ public class Route {
 		route.setEndY(in.nextInt());
 		route.setEarlStart(in.nextInt());
 		route.setLatFinish(in.nextInt());
+		in.close();
 		return route;
 	}
 
