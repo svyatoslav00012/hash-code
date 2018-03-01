@@ -14,7 +14,7 @@ public class Task {
 	private int rides;
 	private int bonus;
 	private int steps;
-	ArrayList<Route> routes;
+	private ArrayList<Route> routes;
 
 	public Task() {
 		routes = new ArrayList<>();
@@ -50,7 +50,7 @@ public class Task {
 			y2 = in.nextInt();
 			s = in.nextInt();
 			f = in.nextInt();
-			routes.add(new Route(x1, y1, x2, y2, s, f));
+			routes.add(new Route(x1, y1, x2, y2, s, f, this));
 		}
 	}
 
@@ -100,6 +100,18 @@ public class Task {
 
 	public void setSteps(int steps) {
 		this.steps = steps;
+	}
+
+	public ArrayList<Route> getRoutes() {
+		return routes;
+	}
+
+	public void setRoutes(ArrayList<Route> routes) {
+		this.routes = routes;
+	}
+
+	public int getMaxDistance(){
+		return rows * columns;
 	}
 
 	public String toString(){

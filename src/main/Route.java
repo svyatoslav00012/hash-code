@@ -3,7 +3,7 @@ package main;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class Route {
+public class Route implements Comparable{
 
 	private int startX;
 	private int startY;
@@ -11,18 +11,20 @@ public class Route {
 	private int endY;
 	private int earlStart;
 	private int latFinish;
+	private Task task;
 
 	public Route(){
 
 	}
 
-	public Route(int startX, int startY, int endX, int endY, int earlStart, int latFinish){
+	public Route(int startX, int startY, int endX, int endY, int earlStart, int latFinish, Task task){
 		this.startX = startX;
 		this.startY = startY;
 		this.endX = endX;
 		this.endY = endY;
 		this.earlStart = earlStart;
 		this.latFinish = latFinish;
+		this.task = task;
 		toString();
 	}
 
@@ -74,6 +76,12 @@ public class Route {
 		this.latFinish = latFinish;
 	}
 
+	public Double getCoef(){
+		Double lenC = (double)(Math.abs(endX - startX) + Math.abs(endY - startY))
+				/ (double)task.getMaxDistance();
+		return lenC;
+	}
+
 	public String toString(){
 		return "startX = " + startX +
 				" startY = " + startY +
@@ -81,5 +89,18 @@ public class Route {
 				" endY = " + endY +
 				" earliest start = " + earlStart +
 				" latest finish = " + latFinish;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return getCoef().compareTo(((Route)o).getCoef());
+	}
+
+	public Task getTask() {
+		return task;
+	}
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 }
