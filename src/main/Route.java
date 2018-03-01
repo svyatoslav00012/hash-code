@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Scanner;
+
 public class Route {
 
 	private int startX;
@@ -8,6 +10,18 @@ public class Route {
 	private int endY;
 	private int earlStart;
 	private int latFinish;
+
+	public static Route read(){
+		Scanner in = new Scanner(System.in);
+		Route route = new Route();
+		route.setStartX(in.nextInt());
+		route.setStartY(in.nextInt());
+		route.setEndX(in.nextInt());
+		route.setEndY(in.nextInt());
+		route.setEarlStart(in.nextInt());
+		route.setLatFinish(in.nextInt());
+		return route;
+	}
 
 	public Route(){
 

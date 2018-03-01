@@ -24,6 +24,8 @@ public class Task {
 		rides = in.nextInt();
 		bonus = in.nextInt();
 		steps = in.nextInt();
+		for(int i = 0; i < rides; ++i)
+			routes.add(Route.read());
 	}
 
 	public int getRows() {
